@@ -2,7 +2,8 @@ const CACHE_NAME = 'mestre-cuca-v1';
 const urlsToCache = [
   '/',
   '/static/style.css', 
-  '/static/mascote.png'
+  '/static/script.js',
+  '/static/img/mascote.png'
 ];
 
 // Instala o Service Worker e guarda os arquivos no cache

@@ -1,5 +1,6 @@
 import os
-from flask import Flask, request, jsonify
+# Adicione 'render_template' na importação
+from flask import Flask, request, jsonify, render_template 
 from flask_cors import CORS
 import google.generativeai as genai
 from dotenv import load_dotenv
@@ -11,8 +12,26 @@ genai.configure(api_key=chave_api)
 # Use o modelo que funcionou no seu teste (gemini-pro ou gemini-1.5-flash)
 model = genai.GenerativeModel('gemini-1.5-flash') 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
+
+# --- NOVO: Rota para servir o Site ---
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+# --- NOVO: Rota para servir arquivos do PWA (manifest, sw.js) ---
+# O navegador espera que esses arquivos estejam na raiz, mas movemos para static.
+# Essa "gambiarra técnica" resolve isso:
+from flask import send_from_directory
+
+@app.route('/manifest.json')
+def manifest():
+    return send_from_directory('static', 'manifest.json')
+
+@app.route('/sw.js')
+def service_worker():
+    return send_from_directory('static', 'sw.js')
 
 # --- Configuração do Chat ---
 # Iniciamos o chat com a personalidade definida
