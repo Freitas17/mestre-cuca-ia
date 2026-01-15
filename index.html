@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mestre Cuca IA - Culinária Inteligente</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#E67E22">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-hat-chef"></i> MestreCuca.IA
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#como-funciona">Como funciona</a></li>
+            <li><a href="https://github.com/Freitas17" target="_blank" class="btn-nav">GitHub</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-layout" id="inicio">
+        
+        <section class="hero-text">
+            <span class="badge">👨‍🍳 Inteligência Artificial Culinária</span>
+            <h1>Não sabe o que <span class="destaque-texto">cozinhar?</span></h1>
+            <p>
+                Acabe com o desperdício e a indecisão. Diga para nossa IA o que tem na sua geladeira e receba receitas incríveis em segundos.
+            </p>
+            
+            <div class="features">
+                <div class="feature-item">
+                    <i class="fa-solid fa-leaf"></i>
+                    <span>Evite Desperdício</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Receitas Rápidas</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <span>Acesse no Celular</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="app-area">
+            <div class="app-glass chat-mode">
+                <header class="chat-header">
+                    <div class="mascote-avatar">
+                        <img src="./img/mascote.png" alt="Chef Avatar">
+                    </div>
+                    <div class="header-info">
+                        <h2>Mestre Cuca</h2>
+                        <span class="status-dot">Online</span>
+                    </div>
+                    <button class="btn-reset" title="Reiniciar Conversa">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                </header>
+
+                <div id="chat-window" class="chat-window">
+                    <div class="message bot">
+                        <div class="bubble">
+                            Olá! Sou seu Chef IA. 👨‍🍳<br>O que tem na sua geladeira hoje?
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" id="user-input" placeholder="Ex: 2 ovos e farinha..." autocomplete="off">
+                    <button id="btn-enviar">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Mestre Cuca IA. Desenvolvido para Portfólio por <strong>André Tech</strong>.</p>
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/freitas17/"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/Freitas17"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/andretech.dev/"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+    <script>
+      // Script PWA (mantido)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+</body>
+</html>
