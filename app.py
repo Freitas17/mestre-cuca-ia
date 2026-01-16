@@ -11,7 +11,7 @@ chave_api = os.getenv("GEMINI_API_KEY")
 # Configura IA
 genai.configure(api_key=chave_api)
 # Use o modelo que funcionou no seu teste local
-model = genai.GenerativeModel('gemini-pro') 
+model = genai.GenerativeModel(''gemini-1.5-flash'') 
 
 # Configura o Flask com as pastas corretas
 app = Flask(__name__, static_folder='static', template_folder='templates')
