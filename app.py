@@ -67,20 +67,21 @@ def limpar_chat():
     chat_session = model.start_chat(history=[])
     return jsonify({"status": "Memória limpa!"})
 
+
+# --- ROTA ESPIÃ (Para descobrir o nome do modelo) ---
+@app.route('/modelos', methods=['GET'])
+def listar_modelos():
+    try:
+        lista_modelos = []
+        for m in genai.list_models():
+            # Filtra apenas modelos que geram texto
+            if 'generateContent' in m.supported_generation_methods:
+                lista_modelos.append(m.name)
+        return jsonify({"modelos_disponiveis": lista_modelos})
+    except Exception as e:
+        return jsonify({"erro": str(e)})
 # -------------------------------------------------------------------------
 
 # O bloco abaixo só roda no seu PC local. O Render ignora isso.
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
-
-    # --- ROTA DE DIAGNÓSTICO (Espiã) ---
-@app.route('/modelos', methods=['GET'])
-def listar_modelos():
-    try:
-        lista = []
-        for m in genai.list_models():
-            if 'generateContent' in m.supported_generation_methods:
-                lista.append(m.name)
-        return jsonify({"modelos_disponiveis": lista})
-    except Exception as e:
-        return jsonify({"erro": str(e)})
